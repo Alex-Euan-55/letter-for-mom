@@ -59,7 +59,7 @@ body{
   padding:20px 0 110px;
   transition:min-height .8s ease, padding .8s ease;
 }
-#envWrap.compact{min-height:0;padding:0;overflow:hidden;transition:none;}
+#envWrap.compact{height:0;min-height:0;padding:0;overflow:hidden;transition:none;}
 body.night{
   background:radial-gradient(ellipse at 20% 20%,#3a1a08 0%,#1e0e06 40%,#261208 100%);
 }
@@ -743,16 +743,9 @@ function openEnvelope(){
 }
 
 function hideGap(){
-  function step(){
-    const flower=document.querySelector('.flower-wrap');
-    if(!flower)return;
-    const top=flower.getBoundingClientRect().top;
-    if(top>10){
-      window.scrollBy(0,Math.min(8,Math.ceil((top-10)*0.4)));
-      requestAnimationFrame(step);
-    }
-  }
-  requestAnimationFrame(step);
+  const card=document.getElementById('card');
+  if(!card)return;
+  window.scrollTo({top:card.offsetTop,behavior:'instant'});
 }
 
 function setupTypewriterTrigger(){
