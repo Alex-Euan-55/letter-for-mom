@@ -59,7 +59,7 @@ body{
   padding:20px 0 110px;
   transition:min-height .8s ease, padding .8s ease;
 }
-#envWrap.compact{min-height:0;padding:0;overflow:hidden;}
+#envWrap.compact{min-height:0;padding:0;overflow:hidden;transition:none;}
 body.night{
   background:radial-gradient(ellipse at 20% 20%,#3a1a08 0%,#1e0e06 40%,#261208 100%);
 }
@@ -728,17 +728,13 @@ function openEnvelope(){
   setTimeout(()=>{peek.classList.remove('show');card.classList.add('show');},1260);
   setTimeout(()=>{
     env.classList.add('fade-away');
+    /* colapso instantáneo del envWrap + saltar al tope */
     envWrap.classList.add('compact');
-  },1800);
+    window.scrollTo({top:0,behavior:'instant'});
+  },1820);
   setTimeout(()=>{popHearts();launchConfetti(70);},1650);
-  setTimeout(()=>{if(musicReady){ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}},1800);
-  /* cuando envWrap colapsó (~2700ms) saltar al tope de la carta */
-  setTimeout(()=>window.scrollTo({top:0,behavior:'instant'}),2700);
+  setTimeout(()=>{if(musicReady){ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}},1820);
   setTimeout(initReveal,1350);
-  /* auto-scroll a la carta después de ver el header */
-  setTimeout(()=>{
-    document.querySelector('.letter-paper').scrollIntoView({behavior:'smooth',block:'start'});
-  },3800);
   /* typewriter arranca cuando la carta entra en viewport */
   setTimeout(setupTypewriterTrigger,1400);
 }
