@@ -320,34 +320,7 @@ body{
 .music-note{font-size:.72rem;color:rgba(212,160,67,.7);margin-left:auto;font-style:italic;font-family:'Cormorant Garamond',serif;align-self:center;flex-shrink:0;}
 .music-player.active .wave-bar{animation-play-state:running;opacity:1;}
 .music-player.active .music-vinyl{animation-play-state:running;}
-/* youtube button */
-.yt-wrap{ margin-bottom:6px; }
-.yt-btn{
-  display:flex; align-items:center; gap:14px;
-  background:linear-gradient(135deg,#1a0a04,#2a1208);
-  border-radius:12px; padding:14px 16px;
-  text-decoration:none;
-  border:1px solid rgba(212,160,67,.2);
-  transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
-  cursor:pointer;
-}
-.yt-btn:hover{ transform:translateY(-2px) scale(1.01); box-shadow:0 8px 24px rgba(0,0,0,.3); }
-.yt-btn-icon{
-  width:46px; height:46px; border-radius:50%; flex-shrink:0;
-  background:linear-gradient(135deg,#ff4444,#cc0000);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.1rem; color:#fff;
-  box-shadow:0 4px 12px rgba(255,0,0,.35);
-  animation:playPulse 2s ease-in-out infinite;
-}
-@keyframes playPulse{
-  0%,100%{box-shadow:0 4px 12px rgba(255,0,0,.35);}
-  50%{box-shadow:0 4px 20px rgba(255,0,0,.6), 0 0 0 6px rgba(255,0,0,.1);}
-}
-.yt-btn-text{ flex:1; }
-.yt-btn-title{ display:block; font-family:'Josefin Sans',sans-serif; font-size:.82rem; font-weight:600; color:#fff; letter-spacing:.5px; margin-bottom:3px; }
-.yt-btn-sub  { display:block; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:.75rem; color:rgba(212,160,67,.7); }
-.yt-logo{ flex-shrink:0; opacity:.7; }
+#yt-player{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 
 .btn-close{
   display:flex;align-items:center;justify-content:center;gap:9px;
@@ -448,32 +421,22 @@ body{
     <div class="card-body">
 
       <!-- 🎵 Música para mamá -->
-      <div class="music-player">
+      <div class="music-player" id="musicPlayer">
+        <div id="yt-player"></div>
         <div class="music-top">
           <div class="music-vinyl" id="vinyl"></div>
           <div class="music-info">
             <div class="music-title">Mamita Querida</div>
             <div class="music-artist">Bipe · 🎵 Para mamá con amor</div>
           </div>
-        </div>
-        <div class="yt-wrap">
-          <a class="yt-btn" href="https://youtu.be/6jqcAYrifG8" target="_blank" onclick="startWaves()">
-            <div class="yt-btn-icon">▶</div>
-            <div class="yt-btn-text">
-              <span class="yt-btn-title">Reproducir en YouTube</span>
-              <span class="yt-btn-sub">Abre la canción y vuelve a leer la carta 🌸</span>
-            </div>
-            <div class="yt-logo">
-              <svg viewBox="0 0 90 20" width="52" fill="red"><path d="M27.9727 3.12324C27.6435 1.89323 26.6768 0.926623 25.4468 0.597366C23.2197 2.24288e-07 14.285 0 14.285 0C14.285 0 5.35042 2.24288e-07 3.12323 0.597366C1.89323 0.926623 0.926623 1.89323 0.597366 3.12324C2.24288e-07 5.35042 0 10 0 10C0 10 2.24288e-07 14.6496 0.597366 16.8768C0.926623 18.1068 1.89323 19.0734 3.12323 19.4026C5.35042 20 14.285 20 14.285 20C14.285 20 23.2197 20 25.4468 19.4026C26.6768 19.0734 27.6435 18.1068 27.9727 16.8768C28.5701 14.6496 28.5701 10 28.5701 10C28.5701 10 28.5677 5.35042 27.9727 3.12324Z" fill="#FF0000"/><path d="M11.4253 14.2854L18.8477 10.0004L11.4253 5.71533V14.2854Z" fill="white"/></svg>
-            </div>
-          </a>
+          <button class="music-play-btn" id="playBtn" onclick="toggleMusic()">▶</button>
         </div>
         <div class="music-waves" id="musicWaves">
           <div class="wave-bar"></div><div class="wave-bar"></div>
           <div class="wave-bar"></div><div class="wave-bar"></div>
           <div class="wave-bar"></div><div class="wave-bar"></div>
           <div class="wave-bar"></div><div class="wave-bar"></div>
-          <div class="music-note">Dale ▶ play y lee la carta con música 🌸</div>
+          <div class="music-note">Música de fondo 🌸</div>
         </div>
       </div>
 
@@ -556,6 +519,31 @@ body{
 </div>
 
 <script>
+/* YouTube IFrame API */
+var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';
+document.head.appendChild(tag);
+var ytPlayer,musicReady=false;
+function onYouTubeIframeAPIReady(){
+  ytPlayer=new YT.Player('yt-player',{
+    videoId:'6jqcAYrifG8',
+    playerVars:{autoplay:0,controls:0,loop:1,playlist:'6jqcAYrifG8'},
+    events:{
+      onReady:function(){musicReady=true;},
+      onStateChange:function(e){
+        var playing=e.data===YT.PlayerState.PLAYING;
+        document.getElementById('vinyl').classList.toggle('playing',playing);
+        document.getElementById('musicPlayer').classList.toggle('active',playing);
+        document.getElementById('playBtn').textContent=playing?'⏸':'▶';
+      }
+    }
+  });
+}
+function toggleMusic(){
+  if(!ytPlayer)return;
+  if(ytPlayer.getPlayerState()===YT.PlayerState.PLAYING){ytPlayer.pauseVideo();}
+  else{ytPlayer.playVideo();}
+}
+
 /* Petals */
 const pw=document.getElementById('petals');
 const petals=['🌸','🌺','🌼','❀'],cols=['#f7c5b5','#f0d080','#e8927c','#d4a043','#fce8d8'];
@@ -585,6 +573,7 @@ function openEnvelope(){
   setTimeout(()=>{peek.classList.remove('show');card.classList.add('show');setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),250);},1260);
   setTimeout(()=>env.classList.add('fade-away'),1800);
   setTimeout(()=>{popHearts();launchConfetti(65);},1650);
+  setTimeout(()=>{if(musicReady)ytPlayer.playVideo();},1800);
 }
 
 /* Close */
@@ -612,12 +601,6 @@ function launchConfetti(n){
   }
 }
 
-
-/* Activate wave bars when music starts */
-function startWaves(){
-  document.getElementById('vinyl').classList.add('playing');
-  document.querySelector('.music-player').classList.add('active');
-}
 
 function popHearts(){
   const e=['🌸','💛','🌺','✨','🌼','💗','🌷','⭐','💐'];
