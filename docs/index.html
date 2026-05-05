@@ -765,6 +765,7 @@ function setupTypewriterTrigger(){
 /* ── Close ── */
 function closeCard(){
   const card=document.getElementById('card'),env=document.getElementById('envelope'),
+        envWrap=document.getElementById('envWrap'),
         flap=document.getElementById('envFlap'),seal=document.getElementById('seal'),
         hint=document.getElementById('tapHint');
   card.classList.remove('show');card.classList.add('hide');
@@ -772,6 +773,9 @@ function closeCard(){
     card.classList.remove('pre-show','hide');
     env.classList.remove('fade-away');
     flap.classList.remove('open');seal.classList.remove('gone');hint.style.display='';
+    envWrap.classList.remove('compact');
+    window.scrollTo({top:0,behavior:'instant'});
+    twStarted=false;
     setTimeout(()=>{env.onclick=openEnvelope;env.style.cursor='pointer';opened=false;},800);
   },820);
 }
