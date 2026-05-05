@@ -259,7 +259,7 @@ body.night .letter-paper{border-color:rgba(212,160,67,.12);box-shadow:0 2px 12px
 .letter-body strong{color:var(--ink);font-weight:600;}
 
 /* Typewriter cursor */
-.tw-cursor{display:inline-block;width:2px;height:1em;background:var(--rose-d);margin-left:2px;vertical-align:text-bottom;animation:twBlink .75s step-end infinite;}
+.tw-cursor{display:inline;color:var(--rose-d);font-size:.9em;margin-left:1px;animation:twBlink .75s step-end infinite;}
 @keyframes twBlink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 /* Firma animada */
@@ -667,6 +667,7 @@ function startTypewriter(){
   el.innerHTML='';
   const cursor=document.createElement('span');
   cursor.className='tw-cursor';
+  cursor.textContent='♥';
   el.appendChild(cursor);
   let i=0;
   function tick(){
