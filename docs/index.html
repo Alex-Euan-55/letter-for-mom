@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Para Mamá · Con amor de Alex 💛</title>
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<title>Para Mamá · Con amor de José, Amairani y Alex 💛</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 <style>
 :root {
   --rose:   #e8927c;
@@ -16,7 +16,8 @@
   --cream:  #fdf6ee;
   --warm:   #f5ede0;
   --paper:  #faf3e8;
-  --ink:    #3a2510;
+  --ink:    #2e1a0e;
+  --body:   #4a3020;
   --soft:   #8a6a5a;
   --mauve:  #c4887a;
 }
@@ -26,7 +27,7 @@ body{
   min-height:100vh;
   background:radial-gradient(ellipse at 20% 20%,#fce8dc 0%,#fdf6ee 40%,#f5ede0 100%);
   display:flex;align-items:flex-start;justify-content:center;
-  font-family:'Josefin Sans',sans-serif;
+  font-family:'Nunito',sans-serif;
   padding:30px 16px 80px;
 }
 
@@ -41,9 +42,7 @@ body{
 
 #wrapper{position:relative;z-index:10;width:min(440px,96vw);display:flex;flex-direction:column;align-items:center;}
 
-/* ══════════════
-   ENVELOPE
-══════════════ */
+/* ══════════════  ENVELOPE  ══════════════ */
 #envelope{
   width:100%;cursor:pointer;user-select:none;
   position:relative;margin-bottom:60px;
@@ -111,11 +110,9 @@ body{
   animation:ringPulse 2s ease-in-out infinite;
 }
 @keyframes ringPulse{0%,100%{box-shadow:0 0 0 0 rgba(212,160,67,.3);}50%{box-shadow:0 0 0 8px rgba(212,160,67,0);}}
-.tap-txt{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.78rem;letter-spacing:2px;color:var(--soft);}
+.tap-txt{font-family:'Lora',serif;font-style:italic;font-size:.82rem;letter-spacing:1px;color:var(--soft);}
 
-/* ══════════════
-   CARD
-══════════════ */
+/* ══════════════  CARD  ══════════════ */
 #card{
   width:100%;background:var(--paper);border-radius:20px;overflow:hidden;
   box-shadow:0 4px 12px rgba(58,37,16,.06),0 16px 40px rgba(58,37,16,.1),0 40px 80px rgba(58,37,16,.12);
@@ -164,13 +161,13 @@ body{
 .flower-wrap{position:relative;z-index:2;display:inline-block;animation:flowerFloat 3.5s ease-in-out infinite;margin-bottom:14px;}
 @keyframes flowerFloat{0%,100%{transform:translateY(0) rotate(-2deg);}50%{transform:translateY(-12px) rotate(2deg);}}
 
-.hero-kicker{position:relative;z-index:2;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:rgba(58,37,16,.6);letter-spacing:2px;margin-bottom:4px;}
+.hero-kicker{position:relative;z-index:2;font-family:'Lora',serif;font-style:italic;font-size:1rem;color:rgba(46,26,14,.65);letter-spacing:1px;margin-bottom:4px;}
 .hero-title {position:relative;z-index:2;font-family:'Great Vibes',cursive;font-size:4.4rem;color:var(--ink);line-height:1;text-shadow:2px 4px 16px rgba(58,37,16,.15);}
 .hero-rule  {position:relative;z-index:2;display:flex;align-items:center;justify-content:center;gap:12px;margin:12px 0 8px;}
 .hero-rule span{height:1px;width:38px;background:linear-gradient(90deg,transparent,rgba(58,37,16,.22));}
 .hero-rule span:last-child{background:linear-gradient(90deg,rgba(58,37,16,.22),transparent);}
-.hero-rule em{font-family:'Cormorant Garamond',serif;font-size:.75rem;color:rgba(58,37,16,.4);letter-spacing:2px;}
-.hero-sub{position:relative;z-index:2;font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:5px;text-transform:uppercase;color:rgba(58,37,16,.45);}
+.hero-rule em{font-family:'Lora',serif;font-size:.78rem;color:rgba(58,37,16,.45);letter-spacing:2px;}
+.hero-sub{position:relative;z-index:2;font-family:'Nunito',sans-serif;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:rgba(58,37,16,.5);}
 
 .wave{display:block;width:100%;margin-top:-2px;}
 
@@ -179,7 +176,7 @@ body{
 .card-body::before{content:'';position:absolute;top:0;left:34px;right:34px;height:1px;background:linear-gradient(90deg,transparent,var(--rose),var(--gold),transparent);opacity:.5;}
 
 .to-block{text-align:center;margin-bottom:28px;}
-.to-label{font-family:'Josefin Sans',sans-serif;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:6px;}
+.to-label{font-family:'Nunito',sans-serif;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--mauve);margin-bottom:6px;font-weight:600;}
 .to-name{
   font-family:'Great Vibes',cursive;font-size:3.1rem;
   background:linear-gradient(130deg,var(--rose-d) 0%,var(--gold-d) 100%);
@@ -193,28 +190,33 @@ body{
 
 /* Letter paper */
 .letter-paper{
-  background:var(--cream);border-radius:14px;padding:28px 26px;
-  border:1px solid rgba(212,160,67,.2);
-  box-shadow:inset 0 2px 8px rgba(58,37,16,.03),0 4px 16px rgba(58,37,16,.06);
-  margin-bottom:26px;position:relative;overflow:hidden;
+  background:#fffdf7;border-radius:14px;padding:30px 28px;
+  border:1px solid rgba(212,160,67,.22);
+  box-shadow:0 2px 12px rgba(58,37,16,.05),0 6px 20px rgba(58,37,16,.06);
+  margin-bottom:26px;position:relative;
 }
-.letter-paper::before{
-  content:'';position:absolute;inset:0;
-  background-image:repeating-linear-gradient(transparent,transparent 27px,rgba(212,160,67,.1) 27px,rgba(212,160,67,.1) 28px);
-  background-position:0 40px;pointer-events:none;
-}
-.letter-paper::after{content:'';position:absolute;top:0;bottom:0;left:46px;width:1px;background:rgba(232,146,124,.18);pointer-events:none;}
 
-.letter-saludo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;color:var(--ink);margin-bottom:14px;font-weight:400;}
-.letter-body  {font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--soft);line-height:2;margin-bottom:16px;font-weight:300;}
+.letter-saludo{
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:1.25rem;color:var(--ink);margin-bottom:18px;font-weight:500;
+}
+.letter-body{
+  font-family:'Lora',serif;font-size:1.05rem;
+  color:var(--body);line-height:1.95;margin-bottom:20px;font-weight:400;
+}
 .letter-body strong{color:var(--ink);font-weight:600;}
-.letter-firma      {text-align:right;font-family:'Great Vibes',cursive;font-size:1.9rem;background:linear-gradient(130deg,var(--rose-d),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.letter-firma-label{text-align:right;font-family:'Josefin Sans',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--mauve);margin-top:2px;}
+
+.firma-block{
+  border-top:1px solid rgba(212,160,67,.2);padding-top:18px;margin-top:4px;
+  display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+}
+.letter-firma{font-family:'Great Vibes',cursive;font-size:2rem;background:linear-gradient(130deg,var(--rose-d),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;}
+.letter-firma-label{font-family:'Nunito',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);font-weight:600;}
 
 /* 3 recuerdos */
 .gifts-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:26px;}
 .gift-box{
-  background:var(--cream);border-radius:14px;padding:16px 10px;text-align:center;
+  background:#fffdf7;border-radius:14px;padding:18px 10px 14px;text-align:center;
   border:1px solid rgba(212,160,67,.18);
   box-shadow:0 3px 12px rgba(58,37,16,.06);
   transition:transform .3s cubic-bezier(.34,1.56,.64,1),box-shadow .3s;
@@ -222,28 +224,46 @@ body{
 }
 .gift-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold));border-radius:14px 14px 0 0;}
 .gift-box:hover{transform:translateY(-5px) rotate(.5deg);box-shadow:0 12px 28px rgba(58,37,16,.1);}
-.gift-icon{font-size:1.8rem;display:block;margin-bottom:6px;animation:giftPulse 2.5s ease-in-out infinite;}
+.gift-icon{font-size:1.9rem;display:block;margin-bottom:8px;animation:giftPulse 2.5s ease-in-out infinite;}
 @keyframes giftPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
 .gift-box:nth-child(2) .gift-icon{animation-delay:.8s;}
 .gift-box:nth-child(3) .gift-icon{animation-delay:1.6s;}
-.gift-title{font-family:'Cormorant Garamond',serif;font-size:.85rem;font-weight:600;color:var(--ink);line-height:1.2;}
-.gift-desc {font-size:.65rem;color:var(--soft);margin-top:3px;font-style:italic;}
+.gift-title{font-family:'Lora',serif;font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.3;}
+.gift-desc {font-family:'Nunito',sans-serif;font-size:.68rem;color:var(--soft);margin-top:4px;}
 
-/* Polaroids */
-.polaroid-strip{display:flex;gap:10px;justify-content:center;margin-bottom:26px;}
+/* Hermanos / Polaroids */
+.siblings-title{
+  text-align:center;font-family:'Nunito',sans-serif;font-size:.65rem;
+  letter-spacing:4px;text-transform:uppercase;color:var(--mauve);
+  font-weight:700;margin-bottom:14px;
+}
+.polaroid-strip{display:flex;gap:12px;justify-content:center;margin-bottom:26px;}
 .polaroid{
-  background:#fff;border-radius:3px;padding:8px 8px 20px;
-  box-shadow:0 4px 14px rgba(58,37,16,.12);flex:1;max-width:120px;text-align:center;
-  transform:rotate(-2.5deg);transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  background:#fff;border-radius:4px;padding:10px 10px 0;
+  box-shadow:0 4px 18px rgba(58,37,16,.13);flex:1;max-width:122px;text-align:center;
+  transform:rotate(-2.5deg);transition:transform .35s cubic-bezier(.34,1.56,.64,1);
+  border:1px solid rgba(0,0,0,.04);
 }
 .polaroid:nth-child(2){transform:rotate(1.5deg);}
-.polaroid:nth-child(3){transform:rotate(-1deg);}
-.polaroid:hover{transform:rotate(0deg) scale(1.08);}
-.polaroid-img{width:100%;aspect-ratio:1;border-radius:2px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin-bottom:6px;}
-.pol1 .polaroid-img{background:linear-gradient(145deg,#fce8d8,#f0c0a0);}
-.pol2 .polaroid-img{background:linear-gradient(145deg,#fdf0d8,#f0d098);}
-.pol3 .polaroid-img{background:linear-gradient(145deg,#fce0d8,#f0b098);}
-.polaroid-caption{font-family:'Great Vibes',cursive;font-size:.95rem;color:var(--soft);}
+.polaroid:nth-child(3){transform:rotate(-1.2deg);}
+.polaroid:hover{transform:rotate(0deg) scale(1.1);z-index:2;position:relative;}
+.polaroid-img{
+  width:100%;aspect-ratio:1;border-radius:3px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.4rem;margin-bottom:0;
+}
+.pol1 .polaroid-img{background:linear-gradient(145deg,#d8eaff,#a8c8f0);}
+.pol2 .polaroid-img{background:linear-gradient(145deg,#fce8d8,#f0c0a0);}
+.pol3 .polaroid-img{background:linear-gradient(145deg,#d8f0e8,#a8d8c0);}
+.polaroid-name{
+  font-family:'Great Vibes',cursive;font-size:1.15rem;color:var(--ink);
+  padding:8px 4px 10px;line-height:1;
+}
+.polaroid-role{
+  font-family:'Nunito',sans-serif;font-size:.58rem;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--soft);padding-bottom:10px;
+  font-weight:600;
+}
 
 /* Date banner */
 .date-banner{
@@ -255,14 +275,14 @@ body{
 .date-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(255,255,255,.15) 0%,transparent 60%);}
 .date-icon{font-size:2rem;flex-shrink:0;position:relative;}
 .date-info{position:relative;}
-.date-label{font-family:'Josefin Sans',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:3px;}
-.date-val  {font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:600;color:#fff;line-height:1.2;}
-.date-sub  {font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.8rem;color:rgba(255,255,255,.75);margin-top:2px;}
+.date-label{font-family:'Nunito',sans-serif;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75);margin-bottom:4px;font-weight:600;}
+.date-val  {font-family:'Lora',serif;font-size:1.15rem;font-weight:600;color:#fff;line-height:1.3;}
+.date-sub  {font-family:'Lora',serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.8);margin-top:3px;}
 
 /* ── Music player ── */
 .music-player{
-  background:linear-gradient(145deg,#3a2510,#5a3820);
-  border-radius:16px;padding:18px 20px;margin-bottom:20px;
+  background:linear-gradient(145deg,#2a1a0c,#4a2e18);
+  border-radius:16px;padding:18px 20px;margin-bottom:24px;
   position:relative;overflow:hidden;
   box-shadow:0 8px 28px rgba(58,37,16,.22);
 }
@@ -282,8 +302,8 @@ body{
 .music-vinyl::after{content:'';width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 2px #3a2010;}
 @keyframes vinylSpin{to{transform:rotate(360deg);}}
 .music-info{flex:1;overflow:hidden;}
-.music-title{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.music-artist{font-family:'Josefin Sans',sans-serif;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:rgba(212,160,67,.7);margin-top:2px;}
+.music-title{font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.music-artist{font-family:'Nunito',sans-serif;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(212,160,67,.75);margin-top:3px;font-weight:600;}
 .music-play-btn{
   width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;flex-shrink:0;
   background:linear-gradient(135deg,var(--rose-d),var(--gold-d));
@@ -293,18 +313,14 @@ body{
   transition:transform .2s,box-shadow .2s;
 }
 .music-play-btn:hover{transform:scale(1.1);box-shadow:0 6px 18px rgba(192,97,74,.5);}
-/* wave bars */
-.music-waves{
-  display:flex;align-items:flex-end;gap:3px;height:28px;position:relative;
-}
+.music-waves{display:flex;align-items:flex-end;gap:3px;height:28px;position:relative;}
 .wave-bar{
   width:4px;border-radius:3px;
   background:linear-gradient(to top,var(--rose),var(--gold-l));
-  opacity:.5;
-  animation:waveAnim ease-in-out infinite paused;
-  transform-origin:bottom;
+  opacity:.4;animation:waveAnim ease-in-out infinite paused;transform-origin:bottom;
 }
 .music-player.active .wave-bar{animation-play-state:running;opacity:1;}
+.music-player.active .music-vinyl{animation-play-state:running;}
 .wave-bar:nth-child(1){height:8px; animation-duration:.9s; animation-delay:0s;}
 .wave-bar:nth-child(2){height:18px;animation-duration:.7s; animation-delay:.1s;}
 .wave-bar:nth-child(3){height:24px;animation-duration:.8s; animation-delay:.2s;}
@@ -313,13 +329,8 @@ body{
 .wave-bar:nth-child(6){height:10px;animation-duration:1s;  animation-delay:.15s;}
 .wave-bar:nth-child(7){height:22px;animation-duration:.75s;animation-delay:.25s;}
 .wave-bar:nth-child(8){height:16px;animation-duration:.85s;animation-delay:.1s;}
-@keyframes waveAnim{
-  0%,100%{transform:scaleY(.4);}
-  50%    {transform:scaleY(1);}
-}
-.music-note{font-size:.72rem;color:rgba(212,160,67,.7);margin-left:auto;font-style:italic;font-family:'Cormorant Garamond',serif;align-self:center;flex-shrink:0;}
-.music-player.active .wave-bar{animation-play-state:running;opacity:1;}
-.music-player.active .music-vinyl{animation-play-state:running;}
+@keyframes waveAnim{0%,100%{transform:scaleY(.4);}50%{transform:scaleY(1);}}
+.music-note{font-family:'Lora',serif;font-size:.72rem;color:rgba(212,160,67,.7);margin-left:auto;font-style:italic;align-self:center;flex-shrink:0;}
 #yt-player{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 
 .btn-close{
@@ -328,15 +339,15 @@ body{
   border:1.5px solid rgba(58,37,16,.15);
   background:linear-gradient(135deg,rgba(232,146,124,.08),rgba(212,160,67,.08));
   cursor:pointer;color:var(--soft);
-  font-family:'Josefin Sans',sans-serif;font-size:.82rem;font-weight:600;letter-spacing:.5px;
+  font-family:'Nunito',sans-serif;font-size:.85rem;font-weight:700;letter-spacing:.5px;
   transition:all .25s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-close:hover{background:linear-gradient(135deg,rgba(232,146,124,.18),rgba(212,160,67,.18));border-color:var(--gold);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(58,37,16,.08);}
 
-.card-foot{background:linear-gradient(135deg,#fce8d8,#f5e0c8);padding:22px 34px;text-align:center;border-top:1px solid rgba(212,160,67,.2);}
-.foot-script{font-family:'Great Vibes',cursive;font-size:1.6rem;color:var(--soft);margin-bottom:4px;}
+.card-foot{background:linear-gradient(135deg,#fce8d8,#f5e0c8);padding:24px 34px;text-align:center;border-top:1px solid rgba(212,160,67,.2);}
+.foot-script{font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--soft);margin-bottom:6px;}
 .foot-hearts{font-size:1.1rem;letter-spacing:4px;}
-.foot-dt{font-family:'Josefin Sans',sans-serif;font-size:.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--soft);opacity:.55;margin-top:4px;}
+.foot-dt{font-family:'Nunito',sans-serif;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--soft);opacity:.6;margin-top:6px;font-weight:600;}
 
 .conf{position:fixed;top:-14px;pointer-events:none;z-index:999;animation:confFall ease-in forwards;opacity:0;}
 @keyframes confFall{0%{opacity:1;transform:translateY(0) rotateZ(0deg);}100%{opacity:0;transform:translateY(110vh) rotateZ(580deg);}}
@@ -345,8 +356,8 @@ body{
 
 @media(max-width:460px){
   .hero-title{font-size:3.4rem;}.card-body{padding:30px 20px 24px;}.card-foot{padding:18px 20px;}
-  .to-name{font-size:2.5rem;}.env-box{height:220px;}.letter-body{font-size:.98rem;}
-  .polaroid-strip{gap:7px;}.gifts-row{gap:8px;}
+  .to-name{font-size:2.5rem;}.env-box{height:220px;}.letter-body{font-size:1rem;}
+  .polaroid-strip{gap:8px;}.gifts-row{gap:8px;}.letter-paper{padding:24px 20px;}
 }
 </style>
 </head>
@@ -403,7 +414,7 @@ body{
         </svg>
       </div>
 
-      <p class="hero-kicker">con todo mi amor</p>
+      <p class="hero-kicker">con todo nuestro amor</p>
       <h1 class="hero-title">Feliz Día,<br>Mamá</h1>
       <div class="hero-rule"><span></span><em>✦ &nbsp; 10 de Mayo &nbsp; ✦</em><span></span></div>
       <p class="hero-sub">Día de las Madres · 2025</p>
@@ -420,18 +431,18 @@ body{
 
     <div class="card-body">
 
-      <!-- 🎵 Música para mamá -->
+      <!-- 🎵 Música -->
       <div class="music-player" id="musicPlayer">
         <div id="yt-player"></div>
         <div class="music-top">
           <div class="music-vinyl" id="vinyl"></div>
           <div class="music-info">
             <div class="music-title">Mamita Querida</div>
-            <div class="music-artist">Bipe · 🎵 Para mamá con amor</div>
+            <div class="music-artist">Bipe · Para mamá con amor</div>
           </div>
           <button class="music-play-btn" id="playBtn" onclick="toggleMusic()">▶</button>
         </div>
-        <div class="music-waves" id="musicWaves">
+        <div class="music-waves">
           <div class="wave-bar"></div><div class="wave-bar"></div>
           <div class="wave-bar"></div><div class="wave-bar"></div>
           <div class="wave-bar"></div><div class="wave-bar"></div>
@@ -447,22 +458,28 @@ body{
 
       <div class="gold-rule"><span></span><em>🌸 ✦ 💛</em><span></span></div>
 
+      <!-- CARTA -->
       <div class="letter-paper">
         <p class="letter-saludo">Querida Mamá,</p>
         <p class="letter-body">
-          Hay personas que con solo estar presentes hacen que el mundo sea
-          un lugar más <strong>cálido y seguro</strong>. Tú eres esa persona para mí.<br><br>
-          Gracias por cada abrazo a tiempo, por cada palabra que me levantó
-          cuando más lo necesité, por enseñarme con tu ejemplo que el amor
-          más grande no se dice, <strong>se demuestra cada día</strong>.<br><br>
-          Hoy y siempre, quiero que sepas que estar a tu lado ha sido y
-          seguirá siendo el regalo más grande de mi vida.
-          <strong>Te amo más de lo que las palabras pueden decir.</strong>
+          Hay personas que con solo estar presentes hacen que el mundo
+          sea un lugar más <strong>cálido y seguro</strong>. Tú eres esa persona
+          para cada uno de nosotros.<br><br>
+          Gracias por cada abrazo a tiempo, por cada madrugada que no
+          dormiste para que nosotros estuviéramos bien, por enseñarnos
+          con tu ejemplo que el amor más grande no se dice,
+          <strong>se demuestra cada día</strong>.<br><br>
+          Hoy, los tres juntos queremos que sepas que tenerte como mamá
+          ha sido y seguirá siendo el regalo más grande de nuestras vidas.
+          <strong>Te amamos más de lo que las palabras pueden decir.</strong>
         </p>
-        <div class="letter-firma">Tu hijo Alex</div>
-        <div class="letter-firma-label">con todo el corazón 💛</div>
+        <div class="firma-block">
+          <div class="letter-firma">José, Amairani y Alex</div>
+          <div class="letter-firma-label">tus tres hijos, con todo el corazón 💛</div>
+        </div>
       </div>
 
+      <!-- Recuerdos -->
       <div class="gifts-row">
         <div class="gift-box">
           <span class="gift-icon">🤗</span>
@@ -471,8 +488,8 @@ body{
         </div>
         <div class="gift-box">
           <span class="gift-icon">🌟</span>
-          <div class="gift-title">Tu fuerza</div>
-          <div class="gift-desc">mi mayor inspiración</div>
+          <div class="gift-title">Tu fortaleza</div>
+          <div class="gift-desc">nuestra mayor inspiración</div>
         </div>
         <div class="gift-box">
           <span class="gift-icon">♾️</span>
@@ -481,18 +498,23 @@ body{
         </div>
       </div>
 
+      <!-- Hermanos -->
+      <div class="siblings-title">Tus tres corazones</div>
       <div class="polaroid-strip">
         <div class="polaroid pol1">
-          <div class="polaroid-img">🌺</div>
-          <div class="polaroid-caption">Mamá</div>
+          <div class="polaroid-img">🧑</div>
+          <div class="polaroid-name">José</div>
+          <div class="polaroid-role">Tu hijo mayor</div>
         </div>
         <div class="polaroid pol2">
-          <div class="polaroid-img">💛</div>
-          <div class="polaroid-caption">& Alex</div>
+          <div class="polaroid-img">👧</div>
+          <div class="polaroid-name">Amairani</div>
+          <div class="polaroid-role">Tu hija</div>
         </div>
         <div class="polaroid pol3">
-          <div class="polaroid-img">🏠</div>
-          <div class="polaroid-caption">Siempre</div>
+          <div class="polaroid-img">😊</div>
+          <div class="polaroid-name">Alex</div>
+          <div class="polaroid-role">Tu hijo</div>
         </div>
       </div>
 
@@ -501,7 +523,7 @@ body{
         <div class="date-info">
           <div class="date-label">Celebramos hoy</div>
           <div class="date-val">Día de las Madres · 10 de Mayo</div>
-          <div class="date-sub">El día más especial del año para mí 💛</div>
+          <div class="date-sub">El día más especial del año para nosotros 💛</div>
         </div>
       </div>
 
@@ -510,9 +532,9 @@ body{
     </div>
 
     <div class="card-foot">
-      <div class="foot-script">Con amor eterno, tu hijo Alex</div>
+      <div class="foot-script">Con amor eterno, tus hijos</div>
       <div class="foot-hearts">🌸 💛 🌺 💛 🌸</div>
-      <div class="foot-dt">Día de las Madres · 2025</div>
+      <div class="foot-dt">José · Amairani · Alex · 2025</div>
     </div>
 
   </div><!-- /#card -->
@@ -541,7 +563,7 @@ function onYouTubeIframeAPIReady(){
 function toggleMusic(){
   if(!ytPlayer)return;
   if(ytPlayer.getPlayerState()===YT.PlayerState.PLAYING){ytPlayer.pauseVideo();}
-  else{ytPlayer.playVideo();}
+  else{ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}
 }
 
 /* Petals */
@@ -600,7 +622,6 @@ function launchConfetti(n){
     document.body.appendChild(c);c.addEventListener('animationend',()=>c.remove());
   }
 }
-
 
 function popHearts(){
   const e=['🌸','💛','🌺','✨','🌼','💗','🌷','⭐','💐'];
