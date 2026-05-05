@@ -171,6 +171,7 @@ body.night .tap-ring{background:rgba(240,208,128,.1);border-color:rgba(212,160,6
   width:100%;background:var(--card-bg);border-radius:20px;overflow:hidden;
   box-shadow:0 4px 12px rgba(58,37,16,.06),0 16px 40px rgba(58,37,16,.1),0 40px 80px rgba(58,37,16,.12);
   opacity:0;max-height:0;pointer-events:none;
+  transform-origin:top center;
   transition:background .6s ease;
 }
 body.night #card{box-shadow:0 4px 12px rgba(0,0,0,.3),0 16px 40px rgba(0,0,0,.4),0 40px 80px rgba(0,0,0,.3);}
@@ -259,7 +260,7 @@ body.night .letter-paper{border-color:rgba(212,160,67,.12);box-shadow:0 2px 12px
 .letter-body strong{color:var(--ink);font-weight:600;}
 
 /* Typewriter cursor */
-.tw-cursor{display:inline;color:var(--rose-d);font-size:.9em;margin-left:1px;animation:twBlink .75s step-end infinite;}
+.tw-cursor{display:inline;color:var(--rose-d);font-size:.9em;margin-left:1px;}
 @keyframes twBlink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 /* Firma animada */
