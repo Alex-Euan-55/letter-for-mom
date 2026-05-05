@@ -42,6 +42,13 @@ body{
 
 #wrapper{position:relative;z-index:10;width:min(440px,96vw);display:flex;flex-direction:column;align-items:center;}
 
+/* ── Scroll reveal ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.1s;}
+.reveal-d2{transition-delay:.2s;}
+.reveal-d3{transition-delay:.3s;}
+
 /* ══════════════  ENVELOPE  ══════════════ */
 #envelope{
   width:100%;cursor:pointer;user-select:none;
@@ -195,7 +202,6 @@ body{
   box-shadow:0 2px 12px rgba(58,37,16,.05),0 6px 20px rgba(58,37,16,.06);
   margin-bottom:26px;position:relative;
 }
-
 .letter-saludo{
   font-family:'Playfair Display',serif;font-style:italic;
   font-size:1.25rem;color:var(--ink);margin-bottom:18px;font-weight:500;
@@ -203,13 +209,24 @@ body{
 .letter-body{
   font-family:'Lora',serif;font-size:1.05rem;
   color:var(--body);line-height:1.95;margin-bottom:20px;font-weight:400;
+  min-height:2em;
 }
 .letter-body strong{color:var(--ink);font-weight:600;}
+
+/* Typewriter cursor */
+.tw-cursor{
+  display:inline-block;width:2px;height:1em;
+  background:var(--rose-d);margin-left:2px;vertical-align:text-bottom;
+  animation:twBlink .75s step-end infinite;
+}
+@keyframes twBlink{0%,100%{opacity:1;}50%{opacity:0;}}
 
 .firma-block{
   border-top:1px solid rgba(212,160,67,.2);padding-top:18px;margin-top:4px;
   display:flex;flex-direction:column;align-items:flex-end;gap:6px;
+  opacity:0;transition:opacity .8s ease;
 }
+.firma-block.visible{opacity:1;}
 .letter-firma{font-family:'Great Vibes',cursive;font-size:2rem;background:linear-gradient(130deg,var(--rose-d),var(--gold-d));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;}
 .letter-firma-label{font-family:'Nunito',sans-serif;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--mauve);font-weight:600;}
 
@@ -229,7 +246,7 @@ body{
 .gift-box:nth-child(2) .gift-icon{animation-delay:.8s;}
 .gift-box:nth-child(3) .gift-icon{animation-delay:1.6s;}
 .gift-title{font-family:'Lora',serif;font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.3;}
-.gift-desc {font-family:'Nunito',sans-serif;font-size:.68rem;color:var(--soft);margin-top:4px;}
+.gift-desc{font-family:'Nunito',sans-serif;font-size:.68rem;color:var(--soft);margin-top:4px;}
 
 /* Hermanos / Polaroids */
 .siblings-title{
@@ -249,21 +266,14 @@ body{
 .polaroid:hover{transform:rotate(0deg) scale(1.1);z-index:2;position:relative;}
 .polaroid-img{
   width:100%;aspect-ratio:1;border-radius:3px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:2.4rem;margin-bottom:0;
+  display:flex;align-items:center;justify-content:center;font-size:2.4rem;
 }
 .pol1 .polaroid-img{background:linear-gradient(145deg,#d8eaff,#a8c8f0);}
 .pol2 .polaroid-img{background:linear-gradient(145deg,#fce8d8,#f0c0a0);}
 .pol3 .polaroid-img{background:linear-gradient(145deg,#d8f0e8,#a8d8c0);}
-.polaroid-name{
-  font-family:'Great Vibes',cursive;font-size:1.15rem;color:var(--ink);
-  padding:8px 4px 10px;line-height:1;
-}
-.polaroid-role{
-  font-family:'Nunito',sans-serif;font-size:.58rem;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--soft);padding-bottom:10px;
-  font-weight:600;
-}
+.polaroid-name{font-family:'Great Vibes',cursive;font-size:1.15rem;color:var(--ink);padding:8px 4px 4px;line-height:1;}
+.polaroid-age{font-family:'Nunito',sans-serif;font-size:.7rem;font-weight:700;color:var(--rose-d);padding-bottom:2px;}
+.polaroid-role{font-family:'Nunito',sans-serif;font-size:.56rem;letter-spacing:1px;text-transform:uppercase;color:var(--soft);padding-bottom:10px;font-weight:600;}
 
 /* Date banner */
 .date-banner{
@@ -286,10 +296,7 @@ body{
   position:relative;overflow:hidden;
   box-shadow:0 8px 28px rgba(58,37,16,.22);
 }
-.music-player::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at 20% 50%,rgba(240,208,128,.08) 0%,transparent 60%);
-}
+.music-player::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(240,208,128,.08) 0%,transparent 60%);}
 .music-top{display:flex;align-items:center;gap:14px;position:relative;margin-bottom:14px;}
 .music-vinyl{
   width:48px;height:48px;border-radius:50%;flex-shrink:0;
@@ -307,10 +314,8 @@ body{
 .music-play-btn{
   width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;flex-shrink:0;
   background:linear-gradient(135deg,var(--rose-d),var(--gold-d));
-  color:#fff;font-size:1rem;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 12px rgba(192,97,74,.4);
-  transition:transform .2s,box-shadow .2s;
+  color:#fff;font-size:1rem;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 12px rgba(192,97,74,.4);transition:transform .2s,box-shadow .2s;
 }
 .music-play-btn:hover{transform:scale(1.1);box-shadow:0 6px 18px rgba(192,97,74,.5);}
 .music-waves{display:flex;align-items:flex-end;gap:3px;height:28px;position:relative;}
@@ -333,6 +338,7 @@ body{
 .music-note{font-family:'Lora',serif;font-size:.72rem;color:rgba(212,160,67,.7);margin-left:auto;font-style:italic;align-self:center;flex-shrink:0;}
 #yt-player{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;}
 
+/* Botones */
 .btn-close{
   display:flex;align-items:center;justify-content:center;gap:9px;
   width:100%;padding:14px 22px;border-radius:50px;
@@ -343,6 +349,32 @@ body{
   transition:all .25s cubic-bezier(.34,1.56,.64,1);
 }
 .btn-close:hover{background:linear-gradient(135deg,rgba(232,146,124,.18),rgba(212,160,67,.18));border-color:var(--gold);color:var(--ink);transform:translateY(-2px);box-shadow:0 8px 20px rgba(58,37,16,.08);}
+
+/* Botón de amor para mamá */
+.btn-love{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:15px 22px;border-radius:50px;margin-top:12px;
+  border:none;
+  background:linear-gradient(135deg,#d4516a,#e8927c,#d4a043);
+  background-size:200% 100%;background-position:0% 0%;
+  cursor:pointer;color:#fff;
+  font-family:'Nunito',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.5px;
+  box-shadow:0 6px 22px rgba(192,80,100,.3);
+  transition:all .3s cubic-bezier(.34,1.56,.64,1);
+}
+.btn-love:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 10px 30px rgba(192,80,100,.4);background-position:100% 0%;}
+.btn-love:disabled{opacity:.75;cursor:default;transform:none;box-shadow:none;}
+
+/* Partículas de amor */
+.love-particle{
+  position:fixed;pointer-events:none;z-index:1000;
+  font-size:1.3rem;
+  animation:loveFly 1.6s ease-out forwards;
+}
+@keyframes loveFly{
+  0%  {opacity:1;transform:translate(0,0) scale(1) rotate(0deg);}
+  100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(.4) rotate(var(--tr));}
+}
 
 .card-foot{background:linear-gradient(135deg,#fce8d8,#f5e0c8);padding:24px 34px;text-align:center;border-top:1px solid rgba(212,160,67,.2);}
 .foot-script{font-family:'Great Vibes',cursive;font-size:1.7rem;color:var(--soft);margin-bottom:6px;}
@@ -389,7 +421,6 @@ body{
       <div class="sk sk1"></div><div class="sk sk2"></div><div class="sk sk3"></div>
       <div class="sk sk4"></div><div class="sk sk5"></div><div class="sk sk6"></div>
       <div class="fh fh1">🌸</div><div class="fh fh2">💛</div><div class="fh fh3">🌺</div>
-
       <div class="flower-wrap">
         <svg width="88" height="88" viewBox="0 0 90 90" fill="none">
           <defs>
@@ -413,7 +444,6 @@ body{
           <circle cx="41" cy="43" r="1.5" fill="#a07020" opacity=".6"/>
         </svg>
       </div>
-
       <p class="hero-kicker">con todo nuestro amor</p>
       <h1 class="hero-title">Feliz Día,<br>Mamá</h1>
       <div class="hero-rule"><span></span><em>✦ &nbsp; 10 de Mayo &nbsp; ✦</em><span></span></div>
@@ -431,8 +461,8 @@ body{
 
     <div class="card-body">
 
-      <!-- 🎵 Música -->
-      <div class="music-player" id="musicPlayer">
+      <!-- Música -->
+      <div class="music-player reveal" id="musicPlayer">
         <div id="yt-player"></div>
         <div class="music-top">
           <div class="music-vinyl" id="vinyl"></div>
@@ -451,36 +481,27 @@ body{
         </div>
       </div>
 
-      <div class="to-block">
+      <div class="to-block reveal reveal-d1">
         <div class="to-label">Para</div>
         <div class="to-name">María Avigail Naal Itzá</div>
       </div>
 
-      <div class="gold-rule"><span></span><em>🌸 ✦ 💛</em><span></span></div>
+      <div class="gold-rule reveal reveal-d2"><span></span><em>🌸 ✦ 💛</em><span></span></div>
 
-      <!-- CARTA -->
-      <div class="letter-paper">
+      <!-- Carta -->
+      <div class="letter-paper reveal">
         <p class="letter-saludo">Querida Mamá,</p>
-        <p class="letter-body">
-          Hay personas que con solo estar presentes hacen que el mundo
-          sea un lugar más <strong>cálido y seguro</strong>. Tú eres esa persona
-          para cada uno de nosotros.<br><br>
-          Gracias por cada abrazo a tiempo, por cada madrugada que no
-          dormiste para que nosotros estuviéramos bien, por enseñarnos
-          con tu ejemplo que el amor más grande no se dice,
-          <strong>se demuestra cada día</strong>.<br><br>
-          Hoy, los tres juntos queremos que sepas que tenerte como mamá
-          ha sido y seguirá siendo el regalo más grande de nuestras vidas.
-          <strong>Te amamos más de lo que las palabras pueden decir.</strong>
+        <p class="letter-body" id="letterBody"
+           data-html="Hay personas que con solo estar presentes hacen que el mundo sea un lugar más <strong>cálido y seguro</strong>. Tú eres esa persona para cada uno de nosotros.<br><br>Gracias por cada abrazo a tiempo, por cada madrugada que no dormiste para que nosotros estuviéramos bien, por enseñarnos con tu ejemplo que el amor más grande no se dice, <strong>se demuestra cada día</strong>.<br><br>Hoy, los tres juntos queremos que sepas que tenerte como mamá ha sido y seguirá siendo el regalo más grande de nuestras vidas. <strong>Te amamos más de lo que las palabras pueden decir.</strong>">
         </p>
-        <div class="firma-block">
+        <div class="firma-block" id="firmaBlock">
           <div class="letter-firma">José, Amairani y Alex</div>
           <div class="letter-firma-label">tus tres hijos, con todo el corazón 💛</div>
         </div>
       </div>
 
       <!-- Recuerdos -->
-      <div class="gifts-row">
+      <div class="gifts-row reveal">
         <div class="gift-box">
           <span class="gift-icon">🤗</span>
           <div class="gift-title">Tus abrazos</div>
@@ -499,26 +520,26 @@ body{
       </div>
 
       <!-- Hermanos -->
-      <div class="siblings-title">Tus tres corazones</div>
-      <div class="polaroid-strip">
+      <div class="siblings-title reveal">Tus tres corazones</div>
+      <div class="polaroid-strip reveal reveal-d1">
         <div class="polaroid pol1">
-          <div class="polaroid-img">🧑</div>
+          <div class="polaroid-img">👦</div>
           <div class="polaroid-name">José</div>
-          <div class="polaroid-role">Tu hijo mayor</div>
+          <div class="polaroid-role">El pequeño</div>
         </div>
         <div class="polaroid pol2">
-          <div class="polaroid-img">👧</div>
+          <div class="polaroid-img">👩</div>
           <div class="polaroid-name">Amairani</div>
-          <div class="polaroid-role">Tu hija</div>
+          <div class="polaroid-role">La del medio</div>
         </div>
         <div class="polaroid pol3">
-          <div class="polaroid-img">😊</div>
+          <div class="polaroid-img">👨</div>
           <div class="polaroid-name">Alex</div>
-          <div class="polaroid-role">Tu hijo</div>
+          <div class="polaroid-role">El mayor</div>
         </div>
       </div>
 
-      <div class="date-banner">
+      <div class="date-banner reveal">
         <div class="date-icon">🌸</div>
         <div class="date-info">
           <div class="date-label">Celebramos hoy</div>
@@ -527,7 +548,12 @@ body{
         </div>
       </div>
 
-      <button class="btn-close" onclick="closeCard()">🌸 &nbsp; Cerrar carta</button>
+      <div class="reveal">
+        <button class="btn-close" onclick="closeCard()">🌸 &nbsp; Cerrar carta</button>
+        <button class="btn-love" id="loveBtn" onclick="sendLove(event)">
+          💛 &nbsp; Mamá, ¡mándanos tu amor!
+        </button>
+      </div>
 
     </div>
 
@@ -541,7 +567,7 @@ body{
 </div>
 
 <script>
-/* YouTube IFrame API */
+/* ── YouTube IFrame API ── */
 var tag=document.createElement('script');tag.src='https://www.youtube.com/iframe_api';
 document.head.appendChild(tag);
 var ytPlayer,musicReady=false;
@@ -566,22 +592,59 @@ function toggleMusic(){
   else{ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}
 }
 
-/* Petals */
+/* ── Petals ── */
 const pw=document.getElementById('petals');
-const petals=['🌸','🌺','🌼','❀'],cols=['#f7c5b5','#f0d080','#e8927c','#d4a043','#fce8d8'];
+const petalEmoji=['🌸','🌺','🌼','❀'],petalCols=['#f7c5b5','#f0d080','#e8927c','#d4a043','#fce8d8'];
 for(let i=0;i<28;i++){
   const d=document.createElement('div');d.className='petal';
   if(Math.random()>.5){
-    d.textContent=petals[~~(Math.random()*petals.length)];
+    d.textContent=petalEmoji[~~(Math.random()*petalEmoji.length)];
     d.style.cssText=`font-size:${.8+Math.random()*.9}rem;left:${Math.random()*100}%;animation-duration:${9+Math.random()*12}s;animation-delay:${-Math.random()*18}s;`;
   } else {
     const w=8+Math.random()*10;
-    d.style.cssText=`width:${w}px;height:${w*1.3}px;background:${cols[~~(Math.random()*cols.length)]};border-radius:50% 0 50% 0;left:${Math.random()*100}%;animation-duration:${9+Math.random()*13}s;animation-delay:${-Math.random()*18}s;`;
+    d.style.cssText=`width:${w}px;height:${w*1.3}px;background:${petalCols[~~(Math.random()*petalCols.length)]};border-radius:50% 0 50% 0;left:${Math.random()*100}%;animation-duration:${9+Math.random()*13}s;animation-delay:${-Math.random()*18}s;`;
   }
   pw.appendChild(d);
 }
 
-/* Open */
+/* ── Scroll reveal ── */
+function initReveal(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+/* ── Typewriter ── */
+function startTypewriter(){
+  const el=document.getElementById('letterBody');
+  const html=el.getAttribute('data-html');
+  el.innerHTML='';
+  const cursor=document.createElement('span');
+  cursor.className='tw-cursor';
+  el.appendChild(cursor);
+  let i=0;
+  function tick(){
+    if(i>=html.length){
+      cursor.remove();
+      setTimeout(()=>document.getElementById('firmaBlock').classList.add('visible'),400);
+      return;
+    }
+    if(html[i]==='<'){
+      const end=html.indexOf('>',i);
+      if(end!==-1){cursor.insertAdjacentHTML('beforebegin',html.slice(i,end+1));i=end+1;tick();return;}
+    }
+    cursor.insertAdjacentText('beforebegin',html[i]);
+    i++;
+    /* pequeña pausa extra en puntos y comas para efecto más natural */
+    const ch=html[i-1];
+    const delay=(ch==='.'||ch==='!'||ch==='?')?120:(ch===','||ch===';')?60:22;
+    setTimeout(tick,delay);
+  }
+  tick();
+}
+
+/* ── Open envelope ── */
 let opened=false;
 function openEnvelope(){
   if(opened)return;opened=true;
@@ -592,13 +655,18 @@ function openEnvelope(){
   setTimeout(()=>{flap.classList.add('open');seal.classList.add('gone');},100);
   setTimeout(()=>peek.classList.add('show'),900);
   setTimeout(()=>card.classList.add('pre-show'),1200);
-  setTimeout(()=>{peek.classList.remove('show');card.classList.add('show');setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),250);},1260);
+  setTimeout(()=>{
+    peek.classList.remove('show');card.classList.add('show');
+    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),250);
+  },1260);
   setTimeout(()=>env.classList.add('fade-away'),1800);
-  setTimeout(()=>{popHearts();launchConfetti(65);},1650);
+  setTimeout(()=>{popHearts();launchConfetti(70);},1650);
   setTimeout(()=>{if(musicReady){ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}},1800);
+  setTimeout(()=>initReveal(),1350);
+  setTimeout(()=>startTypewriter(),2800);
 }
 
-/* Close */
+/* ── Close ── */
 function closeCard(){
   const card=document.getElementById('card'),env=document.getElementById('envelope'),
         flap=document.getElementById('envFlap'),seal=document.getElementById('seal'),
@@ -612,17 +680,26 @@ function closeCard(){
   },820);
 }
 
-/* Confetti */
+/* ── Confetti (con corazones) ── */
 const CC=['#f7c5b5','#f0d080','#e8927c','#d4a043','#fce8d8','#c0614a','#a07020','#fff'];
+const CH=['❤️','💛','🧡','💗','💖','🌸','✨'];
 function launchConfetti(n){
   for(let i=0;i<n;i++){
     const c=document.createElement('div');c.className='conf';
-    const s=4+Math.random()*9,col=CC[~~(Math.random()*CC.length)];
-    c.style.cssText=`left:${1+Math.random()*98}%;background:${col};border-radius:${Math.random()>.5?'50%':'3px'};width:${s}px;height:${s*(.5+Math.random())}px;animation-delay:${Math.random()*1.3}s;animation-duration:${2.2+Math.random()*2.8}s;`;
+    if(Math.random()>.45){
+      /* emoji confetti */
+      c.textContent=CH[~~(Math.random()*CH.length)];
+      c.style.cssText=`font-size:${.9+Math.random()*.8}rem;left:${1+Math.random()*98}%;animation-delay:${Math.random()*1.3}s;animation-duration:${2.4+Math.random()*2.6}s;background:none;`;
+    } else {
+      /* forma confetti */
+      const s=4+Math.random()*9,col=CC[~~(Math.random()*CC.length)];
+      c.style.cssText=`left:${1+Math.random()*98}%;background:${col};border-radius:${Math.random()>.5?'50%':'3px'};width:${s}px;height:${s*(.5+Math.random())}px;animation-delay:${Math.random()*1.3}s;animation-duration:${2.2+Math.random()*2.8}s;`;
+    }
     document.body.appendChild(c);c.addEventListener('animationend',()=>c.remove());
   }
 }
 
+/* ── Pop hearts ── */
 function popHearts(){
   const e=['🌸','💛','🌺','✨','🌼','💗','🌷','⭐','💐'];
   for(let i=0;i<14;i++){
@@ -633,6 +710,36 @@ function popHearts(){
       document.body.appendChild(h);h.addEventListener('animationend',()=>h.remove());
     },i*65);
   }
+}
+
+/* ── Botón amor de mamá ── */
+function sendLove(evt){
+  const btn=document.getElementById('loveBtn');
+  btn.disabled=true;
+  btn.textContent='💛 ¡Los amo con todo mi corazón!';
+
+  const rect=btn.getBoundingClientRect();
+  const cx=rect.left+rect.width/2;
+  const cy=rect.top+rect.height/2;
+  const loveEmoji=['❤️','💛','🧡','💗','💖','🌸','🌺','✨','💐','🌷'];
+
+  for(let i=0;i<22;i++){
+    setTimeout(()=>{
+      const p=document.createElement('div');p.className='love-particle';
+      const angle=Math.random()*Math.PI*2;
+      const dist=80+Math.random()*160;
+      const tx=Math.cos(angle)*dist;
+      const ty=Math.sin(angle)*dist-80;
+      const tr=(Math.random()*120-60)+'deg';
+      p.style.setProperty('--tx',tx+'px');
+      p.style.setProperty('--ty',ty+'px');
+      p.style.setProperty('--tr',tr);
+      p.style.cssText+=`left:${cx}px;top:${cy}px;animation-delay:${Math.random()*.3}s;font-size:${1+Math.random()*.8}rem;`;
+      p.textContent=loveEmoji[~~(Math.random()*loveEmoji.length)];
+      document.body.appendChild(p);p.addEventListener('animationend',()=>p.remove());
+    },i*40);
+  }
+  launchConfetti(40);
 }
 </script>
 </body>
