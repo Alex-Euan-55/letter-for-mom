@@ -731,15 +731,28 @@ function openEnvelope(){
   setTimeout(()=>{peek.classList.remove('show');card.classList.add('show');},1260);
   setTimeout(()=>{
     env.classList.add('fade-away');
-    /* colapso instantáneo del envWrap + saltar al tope */
     envWrap.classList.add('compact');
     window.scrollTo({top:0,behavior:'instant'});
+    hideGap();
   },1820);
   setTimeout(()=>{popHearts();launchConfetti(70);},1650);
   setTimeout(()=>{if(musicReady){ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}},1820);
   setTimeout(initReveal,1350);
   /* typewriter arranca cuando la carta entra en viewport */
   setTimeout(setupTypewriterTrigger,1400);
+}
+
+function hideGap(){
+  function step(){
+    const flower=document.querySelector('.flower-wrap');
+    if(!flower)return;
+    const top=flower.getBoundingClientRect().top;
+    if(top>10){
+      window.scrollBy(0,Math.min(8,Math.ceil((top-10)*0.4)));
+      requestAnimationFrame(step);
+    }
+  }
+  requestAnimationFrame(step);
 }
 
 function setupTypewriterTrigger(){
