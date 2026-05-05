@@ -48,9 +48,18 @@ body{
   background:radial-gradient(ellipse at 20% 20%,#fce8dc 0%,#fdf6ee 40%,#f5ede0 100%);
   display:flex;align-items:flex-start;justify-content:center;
   font-family:'Nunito',sans-serif;
-  padding:30px 16px 80px;
+  padding:0 16px 80px;
   transition:background .6s ease;
 }
+
+/* ── Envelope wrapper (vertical centering) ── */
+#envWrap{
+  width:100%;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px 0 110px;
+  transition:min-height .8s ease, padding .8s ease;
+}
+#envWrap.compact{min-height:0;padding:0;overflow:hidden;}
 body.night{
   background:radial-gradient(ellipse at 20% 20%,#3a1a08 0%,#1e0e06 40%,#261208 100%);
 }
@@ -87,11 +96,10 @@ body.night #nightBtn{background:rgba(30,16,8,.88);border-color:rgba(212,160,67,.
 /* ══════════════  ENVELOPE  ══════════════ */
 #envelope{
   width:100%;cursor:pointer;user-select:none;
-  position:relative;margin-bottom:60px;
-  transition:opacity 1.3s cubic-bezier(.4,0,.2,1),transform 1.3s cubic-bezier(.4,0,.2,1),
-             margin-bottom 1.1s ease,max-height 1.1s ease;
+  position:relative;
+  transition:opacity 1.3s cubic-bezier(.4,0,.2,1),transform 1.3s cubic-bezier(.4,0,.2,1);
 }
-#envelope.fade-away{opacity:0;transform:translateY(-18px) scale(.92);pointer-events:none;margin-bottom:0;max-height:0;overflow:hidden;}
+#envelope.fade-away{opacity:0;transform:translateY(-18px) scale(.92);pointer-events:none;}
 
 .env-box{
   width:100%;height:260px;position:relative;
@@ -423,6 +431,7 @@ body.night .btn-close{border-color:rgba(212,160,67,.2);background:linear-gradien
 <div id="wrapper">
 
   <!-- SOBRE -->
+  <div id="envWrap">
   <div id="envelope" onclick="openEnvelope()">
     <div class="env-box">
       <div class="env-fold-l"></div><div class="env-fold-r"></div>
@@ -436,6 +445,7 @@ body.night .btn-close{border-color:rgba(212,160,67,.2);background:linear-gradien
       <div class="tap-txt">Toca para abrir</div>
     </div>
   </div>
+  </div><!-- /#envWrap -->
 
   <!-- CARTA -->
   <div id="card">
@@ -704,25 +714,47 @@ function animateFirma(){
 }
 
 /* ── Open envelope ── */
-let opened=false;
+let opened=false,twStarted=false;
 function openEnvelope(){
   if(opened)return;opened=true;
   const env=document.getElementById('envelope'),flap=document.getElementById('envFlap'),
         seal=document.getElementById('seal'),peek=document.getElementById('envPeek'),
-        card=document.getElementById('card'),hint=document.getElementById('tapHint');
+        card=document.getElementById('card'),hint=document.getElementById('tapHint'),
+        envWrap=document.getElementById('envWrap');
   env.style.cursor='default';env.onclick=null;hint.style.display='none';
   setTimeout(()=>{flap.classList.add('open');seal.classList.add('gone');},100);
   setTimeout(()=>peek.classList.add('show'),900);
   setTimeout(()=>card.classList.add('pre-show'),1200);
+  setTimeout(()=>{peek.classList.remove('show');card.classList.add('show');},1260);
   setTimeout(()=>{
-    peek.classList.remove('show');card.classList.add('show');
-    setTimeout(()=>card.scrollIntoView({behavior:'smooth',block:'start'}),250);
-  },1260);
-  setTimeout(()=>env.classList.add('fade-away'),1800);
+    env.classList.add('fade-away');
+    envWrap.classList.add('compact');
+  },1800);
   setTimeout(()=>{popHearts();launchConfetti(70);},1650);
   setTimeout(()=>{if(musicReady){ytPlayer.unMute();ytPlayer.setVolume(100);ytPlayer.playVideo();}},1800);
+  /* cuando envWrap colapsó (~2700ms) saltar al tope de la carta */
+  setTimeout(()=>window.scrollTo({top:0,behavior:'instant'}),2700);
   setTimeout(initReveal,1350);
-  setTimeout(startTypewriter,2800);
+  /* auto-scroll a la carta después de ver el header */
+  setTimeout(()=>{
+    document.querySelector('.letter-paper').scrollIntoView({behavior:'smooth',block:'start'});
+  },3800);
+  /* typewriter arranca cuando la carta entra en viewport */
+  setTimeout(setupTypewriterTrigger,1400);
+}
+
+function setupTypewriterTrigger(){
+  const paper=document.querySelector('.letter-paper');
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting&&!twStarted){
+        twStarted=true;
+        startTypewriter();
+        obs.unobserve(paper);
+      }
+    });
+  },{threshold:0.35});
+  obs.observe(paper);
 }
 
 /* ── Close ── */
