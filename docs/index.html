@@ -442,10 +442,67 @@ body.night .btn-close{border-color:rgba(212,160,67,.2);background:linear-gradien
   .to-name{font-size:2.5rem;}.env-box{height:220px;}.letter-body{font-size:1rem;}
   .polaroid-strip{gap:8px;}.gifts-row{gap:8px;}.letter-paper{padding:24px 20px;}
 }
+
+/* ── Lightbox ── */
+.polaroid{cursor:pointer;}
+#lightbox{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(30,10,4,0);backdrop-filter:blur(0px);
+  pointer-events:none;
+  transition:background .4s ease,backdrop-filter .4s ease;
+}
+#lightbox.open{
+  background:rgba(30,10,4,.78);backdrop-filter:blur(12px);
+  pointer-events:auto;
+}
+#lb-card{
+  background:var(--pol-bg);border-radius:6px;
+  padding:14px 14px 0;
+  box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(0,0,0,.04);
+  width:min(300px,85vw);text-align:center;
+  transform:scale(.25) translateY(50px);opacity:0;
+  transition:transform .52s cubic-bezier(.34,1.56,.64,1),opacity .35s ease;
+}
+#lightbox.open #lb-card{transform:scale(1) translateY(0);opacity:1;}
+#lb-img{
+  width:100%;aspect-ratio:1;border-radius:4px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;font-size:5rem;
+}
+#lb-img img{width:100%;height:100%;object-fit:cover;border-radius:4px;display:block;}
+#lb-name{
+  font-family:'Great Vibes',cursive;font-size:2.3rem;color:var(--ink);
+  padding:14px 4px 5px;line-height:1;transition:color .6s ease;
+}
+#lb-role{
+  font-family:'Nunito',sans-serif;font-size:.62rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--soft);padding-bottom:18px;
+  font-weight:600;transition:color .6s ease;
+}
+#lb-close{
+  position:fixed;top:20px;right:20px;
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px solid rgba(255,255,255,.28);
+  background:rgba(255,255,255,.1);color:#fff;font-size:1rem;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity .35s ease,background .2s ease,transform .3s cubic-bezier(.34,1.56,.64,1);
+}
+#lightbox.open #lb-close{opacity:1;pointer-events:auto;}
+#lb-close:hover{background:rgba(255,255,255,.24);transform:scale(1.15) rotate(90deg);}
 </style>
 </head>
 <body>
 <div id="petals"></div>
+
+<div id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <div id="lb-card">
+    <div id="lb-img"></div>
+    <div id="lb-name"></div>
+    <div id="lb-role"></div>
+  </div>
+  <button id="lb-close" onclick="closeLightbox()">✕</button>
+</div>
 <button id="nightBtn" onclick="toggleNight()" title="Modo nocturno">🌙</button>
 <div id="wrapper">
 
@@ -574,17 +631,17 @@ body.night .btn-close{border-color:rgba(212,160,67,.2);background:linear-gradien
 
       <div class="siblings-title reveal">Tus tres corazones</div>
       <div class="polaroid-strip reveal reveal-d1">
-        <div class="polaroid pol1">
+        <div class="polaroid pol1" onclick="openLightbox(this)">
           <div class="polaroid-img">👦</div>
           <div class="polaroid-name">José</div>
           <div class="polaroid-role">El pequeño</div>
         </div>
-        <div class="polaroid pol2">
+        <div class="polaroid pol2" onclick="openLightbox(this)">
           <div class="polaroid-img">👩</div>
           <div class="polaroid-name">Amairani</div>
           <div class="polaroid-role">La del medio</div>
         </div>
-        <div class="polaroid pol3">
+        <div class="polaroid pol3" onclick="openLightbox(this)">
           <div class="polaroid-img"><img src="alex-photo.png" alt="Alex"></div>
           <div class="polaroid-name">Alex</div>
           <div class="polaroid-role">El mayor</div>
@@ -825,6 +882,30 @@ function popHearts(){
     },i*65);
   }
 }
+
+/* ── Lightbox ── */
+const polBg={
+  pol1:'linear-gradient(145deg,#d8eaff,#a8c8f0)',
+  pol2:'linear-gradient(145deg,#fce8d8,#f0c0a0)',
+  pol3:'linear-gradient(145deg,#d8f0e8,#a8d8c0)'
+};
+function openLightbox(pol){
+  const src=pol.querySelector('.polaroid-img');
+  const hasImg=!!src.querySelector('img');
+  const polClass=['pol1','pol2','pol3'].find(c=>pol.classList.contains(c));
+  const lbImg=document.getElementById('lb-img');
+  lbImg.innerHTML=src.innerHTML;
+  lbImg.style.background=hasImg?'':polBg[polClass]||'';
+  document.getElementById('lb-name').textContent=pol.querySelector('.polaroid-name').textContent;
+  document.getElementById('lb-role').textContent=pol.querySelector('.polaroid-role').textContent;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
 /* ── Botón amor ── */
 function sendLove(evt){
