@@ -329,7 +329,8 @@ body.night .polaroid{box-shadow:0 4px 18px rgba(0,0,0,.4);}
 .polaroid:nth-child(2){transform:rotate(1.5deg);}
 .polaroid:nth-child(3){transform:rotate(-1.2deg);}
 .polaroid:hover{transform:rotate(0deg) scale(1.1);z-index:2;position:relative;}
-.polaroid-img{width:100%;aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;}
+.polaroid-img{width:100%;aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;overflow:hidden;}
+.polaroid-img img{width:100%;height:100%;object-fit:cover;border-radius:3px;display:block;}
 .pol1 .polaroid-img{background:linear-gradient(145deg,#d8eaff,#a8c8f0);}
 .pol2 .polaroid-img{background:linear-gradient(145deg,#fce8d8,#f0c0a0);}
 .pol3 .polaroid-img{background:linear-gradient(145deg,#d8f0e8,#a8d8c0);}
@@ -584,7 +585,7 @@ body.night .btn-close{border-color:rgba(212,160,67,.2);background:linear-gradien
           <div class="polaroid-role">La del medio</div>
         </div>
         <div class="polaroid pol3">
-          <div class="polaroid-img">👨</div>
+          <div class="polaroid-img"><img src="alex-photo.png" alt="Alex"></div>
           <div class="polaroid-name">Alex</div>
           <div class="polaroid-role">El mayor</div>
         </div>
